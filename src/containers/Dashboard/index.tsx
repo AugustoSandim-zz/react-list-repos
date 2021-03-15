@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { List } from 'immutable';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
@@ -46,11 +47,11 @@ const Dashboard: React.FC<Props> = ({
           {reposData && reposData.map((item: any) => (
             <div key={item.get('id')}>
               <hr />
-              <div>{item.get('id')}</div>
-              <div>{item.get('name')}</div>
-              <div>{item.get('description')}</div>
-              <div>{item.get('created_at')}</div>
-              <div>{item.get('language')}</div>
+              <div>ID: {item.get('id')}</div>
+              <div>Nome: <strong>{item.get('name')}</strong></div>
+              <div>Descrição: {item.get('description')}</div>
+              <div>Data de criação: {dayjs(item.get('created_at')).format('DD/MM/YYYY')}</div>
+              <div>Linguagem: {item.get('language')}</div>
             </div>
           ))}
         </ul>
