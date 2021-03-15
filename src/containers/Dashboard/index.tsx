@@ -5,6 +5,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import debounce from 'utils/debounce';
 import { fetchReposRequest, getIsLoadingRepos, getReposCount, getReposData, getReposError, Repository } from '../../store/reducers/repositories';
 import { ApplicationState } from '../../store/rootReducer';
+import styles from './Dashboard.module.scss';
 
 interface StateProps {
   fetchReposRequest: typeof fetchReposRequest;
@@ -36,8 +37,8 @@ const Dashboard: React.FC<Props> = ({
   if (isLoadingRepos) return <>Carregando</>
 
   return (
-    <div>
-      <div>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
         <h1>Dashboard</h1>
         <label htmlFor="search">Digite o nome do usuário</label>
         <input id="search" placeholder="Digite o nome do usuário" value={searchText} onChange={handleSearchChange} />
@@ -53,7 +54,6 @@ const Dashboard: React.FC<Props> = ({
             </div>
           ))}
         </ul>
-        <button onClick={() => { }}>Logout</button>
       </div>
     </div>
   );
